@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import vendingmachine.Coin;
+import vendingmachine.enums.Coin;
 
 public class CoinMap {
 	HashMap<Integer, Integer> coinMap = new HashMap<>();
