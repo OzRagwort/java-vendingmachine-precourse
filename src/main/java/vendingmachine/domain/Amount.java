@@ -29,7 +29,7 @@ public class Amount {
 
 	private void validateRange(final int amount) {
 		if (amount < MIN_AMOUNT.get()) {
-			throw new IllegalArgumentException(AMOUNT_RANGE_ERROR_MESSAGE.get());
+			throw new IllegalArgumentException(AMOUNT_OUT_OF_RANGE_ERROR_MESSAGE.get());
 		}
 	}
 
