@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import vendingmachine.enums.Coin;
 
 public class CoinMap {
+	private static final String RESPONSE_VENDING_MACHINE_STATE_FORM = "%d원 - %d개";
+
 	HashMap<Integer, Integer> coinMap = new HashMap<>();
 
 	public CoinMap(final int restAmount) {
@@ -21,6 +23,16 @@ public class CoinMap {
 			coinMap.put(amount, 0);
 		}
 		setRandomCoinMap(coinTypes, restAmount);
+	}
+
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (Coin coin : Coin.values()) {
+			int key = coin.get();
+			stringBuilder.append(String.format(RESPONSE_VENDING_MACHINE_STATE_FORM, key, coinMap.get(key)));
+			stringBuilder.append(System.lineSeparator());
+		}
+		return stringBuilder.toString();
 	}
 
 	private void setRandomCoinMap(final List<Integer> coinTypes, final int restAmount) {
