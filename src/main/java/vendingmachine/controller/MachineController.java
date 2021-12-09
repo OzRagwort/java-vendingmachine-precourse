@@ -5,6 +5,7 @@ import static vendingmachine.view.OutputView.*;
 
 import vendingmachine.domain.Amount;
 import vendingmachine.domain.VendingMachine;
+import vendingmachine.view.OutputView;
 
 public class MachineController {
 	private static final int INIT_HOLDING_AMOUNT = 0;
@@ -20,5 +21,12 @@ public class MachineController {
 		printRequestHoldingAmount();
 		int amount = readAmount();
 		vendingMachine = new VendingMachine(amount);
+	}
+
+	public void printVendingMachineCoinState() {
+		if (vendingMachine != null) {
+			OutputView.printVendingMachineCoinState(vendingMachine);
+		}
+
 	}
 }

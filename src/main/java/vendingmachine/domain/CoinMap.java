@@ -20,6 +20,10 @@ public class CoinMap {
 		generateCoins(coins, amount);
 	}
 
+	public int getCount(final int key) {
+		return coinMap.get(key);
+	}
+
 	private void setMapKeys(final List<Integer> coins) {
 		for (int coin : coins) {
 			coinMap.put(coin, 0);
