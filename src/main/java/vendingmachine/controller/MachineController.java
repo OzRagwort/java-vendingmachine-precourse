@@ -52,8 +52,15 @@ public class MachineController {
 
 	public void requestMoney() {
 		printRequestMoney();
-		int money = readAmount();
-		vendingMachine.payMoney(money);
+		while (true) {
+			try {
+				int money = readAmount();
+				vendingMachine.payMoney(money);
+				break;
+			} catch (IllegalArgumentException e) {
+				printException(e);
+			}
+		}
 	}
 
 	public void buyProduct() {
