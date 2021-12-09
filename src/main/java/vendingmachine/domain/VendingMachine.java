@@ -7,10 +7,16 @@ public class VendingMachine {
 
 	private int holdingAmount;
 	private CoinMap coinMap;
+	private Products products;
 
 	public VendingMachine(final int amount) {
 		this.holdingAmount = amount;
 		this.coinMap = new CoinMap(amount);
+		this.products = new Products();
+	}
+
+	public void addProducts(String inputProductString) {
+		products.add(inputProductString);
 	}
 
 	public String toString() {

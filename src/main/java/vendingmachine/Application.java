@@ -11,5 +11,6 @@ public class Application {
 	private static void programStart(final MachineController controller) {
 		controller.setupHoldingAmount();
 		controller.printVendingMachineCoinState();
+		controller.requestProducts();
 	}
 }

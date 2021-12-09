@@ -13,4 +13,8 @@ public class OutputView {
 		System.out.println(RESPONSE_COIN_STATE_MESSAGE.get());
 		System.out.println(vendingMachine.toString());
 	}
+
+	public static void printRequestProducts() {
+		System.out.println(REQUEST_ADD_PRODUCT_MESSAGE.get());
+	}
 }

@@ -29,4 +29,10 @@ public class MachineController {
 		}
 
 	}
+
+	public void requestProducts() {
+		printRequestProducts();
+		String inputProductString = readProductsMessage();
+		vendingMachine.addProducts(inputProductString);
+	}
 }
