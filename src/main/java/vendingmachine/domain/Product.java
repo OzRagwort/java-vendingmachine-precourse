@@ -21,10 +21,11 @@ public class Product {
 	public Product(final String input) {
 		Matcher matcher = PATTERN.matcher(input);
 		if (matcher.find()) {
+			String name = new Name(matcher.group(NAME_POSITION)).get();
 			int price = new Amount(matcher.group(PRICE_POSITION)).get();
 			int quantity = new Quantity(matcher.group(QUANTITY_POSITION)).get();
 			validatePrice(price);
-			this.name = matcher.group(NAME_POSITION);
+			this.name = name;
 			this.price = price;
 			this.quantity = quantity;
 		}
