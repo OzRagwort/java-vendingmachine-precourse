@@ -21,4 +21,16 @@ public class OutputView {
 	public static void printRequestMoney() {
 		System.out.println(REQUEST_MONEY_MESSAGE.get());
 	}
+
+	public static void printInMoney(VendingMachine vendingMachine) {
+		String printText = String.format(
+			RESPONSE_IN_MONEY_FORM.get(),
+			vendingMachine.getInMoney()
+		);
+		System.out.println(printText);
+	}
+
+	public static void printRequestProductNameToBuy() {
+		System.out.println(REQUEST_PRODUCT_NAME_TO_BUY.get());
+	}
 }

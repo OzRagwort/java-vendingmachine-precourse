@@ -41,4 +41,11 @@ public class MachineController {
 		int money = readAmount();
 		vendingMachine.payMoney(money);
 	}
+
+	public void buyProduct() {
+		printInMoney(vendingMachine);
+		printRequestProductNameToBuy();
+		String productName = readProductName();
+		vendingMachine.sell(productName);
+	}
 }

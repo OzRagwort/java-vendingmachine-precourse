@@ -22,6 +22,14 @@ public class VendingMachine {
 		inMoney += money;
 	}
 
+	public void sell(String productName) {
+		inMoney = products.sell(productName, inMoney);
+	}
+
+	public int getInMoney() {
+		return inMoney;
+	}
+
 	public String toString() {
 		StringBuilder log = new StringBuilder();
 		for (Coin coin : Coin.values()) {

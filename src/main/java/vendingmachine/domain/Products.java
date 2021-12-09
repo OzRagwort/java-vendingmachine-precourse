@@ -32,6 +32,15 @@ public class Products {
 		products.addAll(productBuffer);
 	}
 
+	public int sell(String productName, int money) {
+		Product product = products.stream()
+			.filter(p -> p.isSameName(productName))
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException(
+				String.format(NO_PRODUCT_ERROR_MESSAGE_FORM.get(), productName)));
+		return product.sell(money);
+	}
+
 	private List<String> getProductNames() {
 		return products.stream()
 			.map(Product::getName)

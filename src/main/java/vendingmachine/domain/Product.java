@@ -31,8 +31,32 @@ public class Product {
 		}
 	}
 
+	public int sell(final int money) {
+		checkPossibleSell(money);
+		quantity--;
+		return money - price;
+	}
+
 	public String getName() {
 		return name;
+	}
+
+	public boolean isSameName(final String name) {
+		return this.name.equals(name);
+	}
+
+	public boolean isCanSell() {
+		return quantity > 0;
+	}
+
+	private void checkPossibleSell(final int money) {
+		if (!isCanSell()) {
+			String exceptionMessage = String.format(NO_QUANTITY_ERROR_MESSAGE_FORM.get(), name);
+			throw new IllegalArgumentException(exceptionMessage);
+		}
+		if (money < price) {
+			throw new IllegalArgumentException(LACK_MONEY_ERROR_MESSAGE.get());
+		}
 	}
 
 	private void validatePrice(final int price) {

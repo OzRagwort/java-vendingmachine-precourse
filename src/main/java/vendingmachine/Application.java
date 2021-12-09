@@ -13,5 +13,6 @@ public class Application {
 		controller.printVendingMachineCoinState();
 		controller.requestProducts();
 		controller.requestMoney();
+		controller.buyProduct();
 	}
 }
