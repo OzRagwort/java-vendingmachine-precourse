@@ -5,6 +5,7 @@ import static vendingmachine.enums.PrintMessage.*;
 import java.util.HashMap;
 
 import vendingmachine.domain.VendingMachine;
+import vendingmachine.enums.Coin;
 
 public class OutputView {
 	public static void printRequestHoldingAmount() {
@@ -38,9 +39,12 @@ public class OutputView {
 
 	public static void printChanges(HashMap<Integer, Integer> returnChanges) {
 		System.out.println(RESPONSE_CHANGES_MESSAGE.get());
-		for (int amount : returnChanges.keySet()) {
-			String printText = String.format(COIN_COUNT_FORM.get(), amount, returnChanges.get(amount));
-			System.out.println(printText);
+		for (Coin coin : Coin.values()) {
+			int amount = coin.get();
+			if (returnChanges.containsKey(amount)) {
+				String printText = String.format(COIN_COUNT_FORM.get(), amount, returnChanges.get(amount));
+				System.out.println(printText);
+			}
 		}
 	}
 
