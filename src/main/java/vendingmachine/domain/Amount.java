@@ -15,6 +15,12 @@ public class Amount {
 		this.amount = integerAmount;
 	}
 
+	public Amount(final int amount) {
+		validateRange(amount);
+		validateDivisible(amount);
+		this.amount = amount;
+	}
+
 	public int get() {
 		return amount;
 	}
