@@ -39,8 +39,15 @@ public class MachineController {
 
 	public void requestProducts() {
 		printRequestProducts();
-		String inputProductString = readProductsMessage();
-		vendingMachine.addProducts(inputProductString);
+		while (true) {
+			try {
+				String inputProductString = readProductsMessage();
+				vendingMachine.addProducts(inputProductString);
+				break;
+			} catch (IllegalArgumentException e) {
+				printException(e);
+			}
+		}
 	}
 
 	public void requestMoney() {
