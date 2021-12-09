@@ -45,12 +45,18 @@ public class Product {
 		return this.name.equals(name);
 	}
 
-	public boolean canSell() {
-		return quantity > 0;
+	public boolean canSell(int money) {
+		if (money < price) {
+			return false;
+		}
+		if (quantity == 0) {
+			return false;
+		}
+		return true;
 	}
 
 	private void checkPossibleSell(final int money) {
-		if (!canSell()) {
+		if (!canSell(money)) {
 			String exceptionMessage = String.format(NO_QUANTITY_ERROR_MESSAGE_FORM.get(), name);
 			throw new IllegalArgumentException(exceptionMessage);
 		}

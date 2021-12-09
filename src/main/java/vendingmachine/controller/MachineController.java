@@ -48,4 +48,13 @@ public class MachineController {
 		String productName = readProductName();
 		vendingMachine.sell(productName);
 	}
+
+	public void printChanges() {
+		printInMoney(vendingMachine);
+		OutputView.printChanges(vendingMachine.returnChanges());
+	}
+
+	public boolean canSell() {
+		return vendingMachine.canSell();
+	}
 }

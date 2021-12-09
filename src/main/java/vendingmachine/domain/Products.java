@@ -32,6 +32,11 @@ public class Products {
 		products.addAll(productBuffer);
 	}
 
+	public boolean canSell(int money) {
+		return products.stream()
+			.anyMatch(product -> product.canSell(money));
+	}
+
 	public int sell(String productName, int money) {
 		Product product = products.stream()
 			.filter(p -> p.isSameName(productName))

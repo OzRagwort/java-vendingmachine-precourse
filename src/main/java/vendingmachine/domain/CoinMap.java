@@ -24,6 +24,13 @@ public class CoinMap {
 		return coinMap.get(key);
 	}
 
+	public int getChanges(final int inMoney, final int amount) {
+		int coinCount = coinMap.get(amount);
+		int changesCount = Math.min(inMoney / amount, coinCount);
+		coinMap.put(amount, coinMap.get(amount) - changesCount);
+		return changesCount;
+	}
+
 	private void setMapKeys(final List<Integer> coins) {
 		for (int coin : coins) {
 			coinMap.put(coin, 0);

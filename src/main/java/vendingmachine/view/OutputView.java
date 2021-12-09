@@ -2,6 +2,8 @@ package vendingmachine.view;
 
 import static vendingmachine.enums.PrintMessage.*;
 
+import java.util.HashMap;
+
 import vendingmachine.domain.VendingMachine;
 
 public class OutputView {
@@ -32,5 +34,13 @@ public class OutputView {
 
 	public static void printRequestProductNameToBuy() {
 		System.out.println(REQUEST_PRODUCT_NAME_TO_BUY.get());
+	}
+
+	public static void printChanges(HashMap<Integer, Integer> returnChanges) {
+		System.out.println(RESPONSE_CHANGES_MESSAGE.get());
+		for (int amount : returnChanges.keySet()) {
+			String printText = String.format(COIN_COUNT_FORM.get(), amount, returnChanges.get(amount));
+			System.out.println(printText);
+		}
 	}
 }
