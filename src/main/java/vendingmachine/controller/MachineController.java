@@ -19,8 +19,15 @@ public class MachineController {
 
 	public void setupHoldingAmount() {
 		printRequestHoldingAmount();
-		int amount = readAmount();
-		vendingMachine = new VendingMachine(amount);
+		while (true) {
+			try {
+				int amount = readAmount();
+				vendingMachine = new VendingMachine(amount);
+				break;
+			} catch (IllegalArgumentException e) {
+				printException(e);
+			}
+		}
 	}
 
 	public void printVendingMachineCoinState() {

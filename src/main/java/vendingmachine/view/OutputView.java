@@ -43,4 +43,8 @@ public class OutputView {
 			System.out.println(printText);
 		}
 	}
+
+	public static void printException(IllegalArgumentException e) {
+		System.out.println(e.getMessage());
+	}
 }
