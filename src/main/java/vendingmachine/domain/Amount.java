@@ -34,7 +34,7 @@ public class Amount {
 	}
 
 	private void validateDivisible(final int amount) {
-		if (amount % Coin.COIN_10.get() == 0) {
+		if (amount % Coin.COIN_10.get() != 0) {
 			throw new IllegalArgumentException(AMOUNT_NOT_DIVISIBLE_BY_10_ERROR_MESSAGE.get());
 		}
 	}
