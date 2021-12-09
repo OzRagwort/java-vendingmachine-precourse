@@ -1,5 +1,6 @@
 package vendingmachine.domain;
 
+import static vendingmachine.enums.ErrorMessage.*;
 import static vendingmachine.enums.Regex.*;
 
 import java.util.regex.Matcher;
@@ -11,6 +12,7 @@ public class Product {
 	private static final int NAME_POSITION = 1;
 	private static final int PRICE_POSITION = 2;
 	private static final int QUANTITY_POSITION = 3;
+	private static final int MINIMUM_PRICE = 100;
 
 	private String name;
 	private int price;
@@ -19,9 +21,22 @@ public class Product {
 	public Product(final String input) {
 		Matcher matcher = PATTERN.matcher(input);
 		if (matcher.find()) {
+			int price = new Amount(matcher.group(PRICE_POSITION)).get();
+			int quantity = new Quantity(matcher.group(QUANTITY_POSITION)).get();
+			validatePrice(price);
 			this.name = matcher.group(NAME_POSITION);
-			this.price = Integer.parseInt(matcher.group(PRICE_POSITION));
-			this.quantity = Integer.parseInt(matcher.group(QUANTITY_POSITION));
+			this.price = price;
+			this.quantity = quantity;
+		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	private void validatePrice(final int price) {
+		if (price < MINIMUM_PRICE) {
+			throw new IllegalArgumentException(LOWER_THAN_MINIMUM_PRICE_ERROR_MESSAGE.get());
 		}
 	}
 }
