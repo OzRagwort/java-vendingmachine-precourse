@@ -2,8 +2,10 @@ package vendingmachine.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import vendingmachine.domain.Amount;
+
 public class InputView {
 	public static int readAmount() {
-		return Integer.parseInt(readLine());
+		return new Amount(readLine()).get();
 	}
 }
