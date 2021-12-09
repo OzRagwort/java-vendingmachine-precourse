@@ -7,6 +7,7 @@ public class VendingMachine {
 
 	private CoinMap coinMap;
 	private Products products;
+	private int inMoney;
 
 	public VendingMachine(final int amount) {
 		this.coinMap = new CoinMap(amount);
@@ -15,6 +16,10 @@ public class VendingMachine {
 
 	public void addProducts(String inputProductString) {
 		products.add(inputProductString);
+	}
+
+	public void payMoney(int money) {
+		inMoney += money;
 	}
 
 	public String toString() {

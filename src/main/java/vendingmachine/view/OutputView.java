@@ -17,4 +17,8 @@ public class OutputView {
 	public static void printRequestProducts() {
 		System.out.println(REQUEST_ADD_PRODUCT_MESSAGE.get());
 	}
+
+	public static void printRequestMoney() {
+		System.out.println(REQUEST_MONEY_MESSAGE.get());
+	}
 }

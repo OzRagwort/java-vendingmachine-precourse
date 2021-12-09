@@ -35,4 +35,10 @@ public class MachineController {
 		String inputProductString = readProductsMessage();
 		vendingMachine.addProducts(inputProductString);
 	}
+
+	public void requestMoney() {
+		printRequestMoney();
+		int money = readAmount();
+		vendingMachine.payMoney(money);
+	}
 }
