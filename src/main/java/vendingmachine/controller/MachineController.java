@@ -23,6 +23,7 @@ public class MachineController {
 			try {
 				int amount = readAmount();
 				vendingMachine = new VendingMachine(amount);
+				System.out.println();
 				break;
 			} catch (IllegalArgumentException e) {
 				printException(e);
@@ -34,7 +35,6 @@ public class MachineController {
 		if (vendingMachine != null) {
 			OutputView.printVendingMachineCoinState(vendingMachine);
 		}
-
 	}
 
 	public void requestProducts() {
@@ -43,6 +43,7 @@ public class MachineController {
 			try {
 				String inputProductString = readProductsMessage();
 				vendingMachine.addProducts(inputProductString);
+				System.out.println();
 				break;
 			} catch (IllegalArgumentException e) {
 				printException(e);
@@ -56,6 +57,7 @@ public class MachineController {
 			try {
 				int money = readAmount();
 				vendingMachine.payMoney(money);
+				System.out.println();
 				break;
 			} catch (IllegalArgumentException e) {
 				printException(e);
@@ -70,6 +72,7 @@ public class MachineController {
 			try {
 				String productName = readProductName();
 				vendingMachine.sell(productName);
+				System.out.println();
 				break;
 			} catch (IllegalArgumentException e) {
 				printException(e);
