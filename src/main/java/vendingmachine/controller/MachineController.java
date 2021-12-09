@@ -66,8 +66,15 @@ public class MachineController {
 	public void buyProduct() {
 		printInMoney(vendingMachine);
 		printRequestProductNameToBuy();
-		String productName = readProductName();
-		vendingMachine.sell(productName);
+		while (true) {
+			try {
+				String productName = readProductName();
+				vendingMachine.sell(productName);
+				break;
+			} catch (IllegalArgumentException e) {
+				printException(e);
+			}
+		}
 	}
 
 	public void printChanges() {
