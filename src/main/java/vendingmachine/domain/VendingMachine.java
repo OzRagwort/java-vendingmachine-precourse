@@ -5,12 +5,10 @@ import vendingmachine.enums.Coin;
 public class VendingMachine {
 	private static final String TO_STRING_FORM = "%d원 - %d개";
 
-	private int holdingAmount;
 	private CoinMap coinMap;
 	private Products products;
 
 	public VendingMachine(final int amount) {
-		this.holdingAmount = amount;
 		this.coinMap = new CoinMap(amount);
 		this.products = new Products();
 	}
