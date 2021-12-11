@@ -28,10 +28,17 @@ public class VendingMachine {
 	}
 
 	public void initCoin() {
-		printRequestHoldingAmountMessage();
-		Amount totalAmount = readAmount();
-		vendingMachineService.initCoin(new InitCoinDto(coins, totalAmount));
-		printLineSeparator();
+		while (true) {
+			try {
+				printRequestHoldingAmountMessage();
+				Amount totalAmount = readAmount();
+				vendingMachineService.initCoin(new InitCoinDto(coins, totalAmount));
+				printLineSeparator();
+				return;
+			} catch (IllegalArgumentException e) {
+				printExceptionMessage(e);
+			}
+		}
 	}
 
 	public void showCoinState() {

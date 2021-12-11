@@ -11,6 +11,10 @@ public class VendingMachineOutputView {
 		System.out.println();
 	}
 
+	public static void printExceptionMessage(Exception e) {
+		System.out.println(e.getMessage());
+	}
+
 	public static void printRequestHoldingAmountMessage() {
 		System.out.println(REQUEST_HOLDING_AMOUNT_MESSAGE.get());
 	}
