@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RemainCoinTest {
+public class CoinsTest {
 	@DisplayName("동전 무작위 생성 테스트")
 	@Test
 	void initCoinTest() {
 		assertRandomNumberInListTest(
 			() -> {
-				RemainCoin coin = new RemainCoin();
+				Coins coin = new Coins();
 				coin.initCoins(450);
 				assertEquals(coin.getCount(500), 0);
 				assertEquals(coin.getCount(100), 4);
