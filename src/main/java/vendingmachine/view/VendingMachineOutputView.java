@@ -18,4 +18,8 @@ public class VendingMachineOutputView {
 			System.out.println(message);
 		}
 	}
+
+	public static void printRequestProductInformation() {
+		System.out.println(REQUEST_PRODUCT_INFORMATION_MESSAGE.get());
+	}
 }
