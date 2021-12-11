@@ -48,20 +48,31 @@ public class VendingMachine {
 		printLineSeparator();
 	}
 
-	public void sellProducts() {
+	public void startSellPhase() {
+		requestMoney();
+		while (vendingMachineService.canSell(new CanSellDto(products, inputMoney))) {
+			sellProduct();
+		}
+		responseChanges();
+	}
+
+	private void requestMoney() {
 		printRequestMoneyMessage();
 		inputMoney += readAmount().get();
 		printLineSeparator();
+	}
 
-		while (vendingMachineService.canSell(new CanSellDto(products, inputMoney))) {
-			printNowMoneyState(new ResponseMoneyState(inputMoney));
-			printRequestBuyProductNameMessage();
-			ProductName productName = readProductName();
-			SellProductResultDto sellProductResultDto = vendingMachineService.sellProduct(
-				new SellProductDto(products, productName, inputMoney));
-			inputMoney = sellProductResultDto.getInputMoney();
-			printLineSeparator();
-		}
+	private void sellProduct() {
+		printNowMoneyState(new ResponseMoneyState(inputMoney));
+		printRequestBuyProductNameMessage();
+		ProductName productName = readProductName();
+		SellProductResultDto sellProductResultDto = vendingMachineService.sellProduct(
+			new SellProductDto(products, productName, inputMoney));
+		inputMoney = sellProductResultDto.getInputMoney();
+		printLineSeparator();
+	}
+
+	private void responseChanges() {
 		printNowMoneyState(new ResponseMoneyState(inputMoney));
 		ResponseChangesDto responseChangesDto = vendingMachineService.calculateChange(
 			new RequestChangesDto(coins, inputMoney));

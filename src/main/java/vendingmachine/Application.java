@@ -12,6 +12,6 @@ public class Application {
 		vendingMachine.initCoin();
 		vendingMachine.showCoinState();
 		vendingMachine.registerProducts();
-		vendingMachine.sellProducts();
+		vendingMachine.startSellPhase();
 	}
 }
