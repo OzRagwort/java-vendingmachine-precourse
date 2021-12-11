@@ -20,4 +20,8 @@ public class VendingMachine {
 		int totalAmount = readAmount();
 		vendingMachineService.initCoin(coins, new InitCoinDto(totalAmount));
 	}
+
+	public void showCoinState() {
+		printCoinState(coins);
+	}
 }
