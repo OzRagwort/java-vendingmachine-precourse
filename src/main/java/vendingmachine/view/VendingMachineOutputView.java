@@ -3,6 +3,7 @@ package vendingmachine.view;
 import static vendingmachine.enums.OutputMessage.*;
 
 import vendingmachine.domain.RemainCoin;
+import vendingmachine.dto.ResponseMoneyState;
 import vendingmachine.enums.Coin;
 
 public class VendingMachineOutputView {
@@ -21,5 +22,18 @@ public class VendingMachineOutputView {
 
 	public static void printRequestProductInformation() {
 		System.out.println(REQUEST_PRODUCT_INFORMATION_MESSAGE.get());
+	}
+
+	public static void printRequestMoneyMessage() {
+		System.out.println(REQUEST_MONEY_MESSAGE.get());
+	}
+
+	public static void printNowMoneyState(ResponseMoneyState money) {
+		String message = String.format(RESPONSE_NOW_MONEY_FORM.get(), money.getMoney());
+		System.out.println(message);
+	}
+
+	public static void printRequestBuyProductNameMessage() {
+		System.out.println(REQUEST_BUY_PRODUCT_NAME_MESSAGE.get());
 	}
 }

@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import static vendingmachine.enums.ErrorMessage.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -27,5 +29,14 @@ public class Products {
 
 	public void addAll(Products newProducts) {
 		products.addAll(newProducts.products);
+	}
+
+	public int sellProduct(ProductName name, int inputMoney) {
+		Product product = products.stream()
+			.filter(p -> p.isSameName(name.get()))
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException(NO_PRODUCT_ERROR_MESSAGE.get()));
+		inputMoney -= product.sell();
+		return inputMoney;
 	}
 }

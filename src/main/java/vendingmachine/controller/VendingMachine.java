@@ -3,10 +3,14 @@ package vendingmachine.controller;
 import static vendingmachine.view.VendingMachineInputView.*;
 import static vendingmachine.view.VendingMachineOutputView.*;
 
+import vendingmachine.domain.ProductName;
 import vendingmachine.domain.Products;
 import vendingmachine.domain.RemainCoin;
 import vendingmachine.dto.AddProductsDto;
 import vendingmachine.dto.InitCoinDto;
+import vendingmachine.dto.SellProductResultDto;
+import vendingmachine.dto.ResponseMoneyState;
+import vendingmachine.dto.SellProductDto;
 import vendingmachine.service.VendingMachineService;
 
 public class VendingMachine {
@@ -14,6 +18,7 @@ public class VendingMachine {
 
 	private RemainCoin coins = new RemainCoin();
 	private Products products = new Products();
+	private int inputMoney = 0;
 
 	public VendingMachine() {
 	}
@@ -34,5 +39,16 @@ public class VendingMachine {
 		products = vendingMachineService
 			.addProducts(new AddProductsDto(products, newProducts))
 			.getProducts();
+	}
+
+	public void sellProducts() {
+		printRequestMoneyMessage();
+		inputMoney += readAmount();
+		printNowMoneyState(new ResponseMoneyState(inputMoney));
+		printRequestBuyProductNameMessage();
+		ProductName productName = readProductName();
+		SellProductResultDto sellProductResultDto = vendingMachineService.sellProduct(
+			new SellProductDto(products, productName, inputMoney));
+		inputMoney = sellProductResultDto.getInputMoney();
 	}
 }

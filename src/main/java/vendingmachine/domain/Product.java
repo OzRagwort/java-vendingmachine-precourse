@@ -20,4 +20,17 @@ public class Product {
 	public String getName() {
 		return name;
 	}
+
+	public boolean isSameName(String name) {
+		return this.name.equals(name);
+	}
+
+	public boolean isSameQuantity(int quantity) {
+		return this.quantity == quantity;
+	}
+
+	public int sell() {
+		quantity--;
+		return price;
+	}
 }
