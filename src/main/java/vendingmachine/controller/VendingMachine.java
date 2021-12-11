@@ -3,6 +3,7 @@ package vendingmachine.controller;
 import static vendingmachine.view.VendingMachineInputView.*;
 import static vendingmachine.view.VendingMachineOutputView.*;
 
+import vendingmachine.domain.Amount;
 import vendingmachine.domain.ProductName;
 import vendingmachine.domain.Products;
 import vendingmachine.domain.Coins;
@@ -28,8 +29,8 @@ public class VendingMachine {
 
 	public void initCoin() {
 		printRequestHoldingAmountMessage();
-		int totalAmount = readAmount();
-		vendingMachineService.initCoin(coins, new InitCoinDto(totalAmount));
+		Amount totalAmount = readAmount();
+		vendingMachineService.initCoin(new InitCoinDto(coins, totalAmount));
 		printLineSeparator();
 	}
 
@@ -49,7 +50,7 @@ public class VendingMachine {
 
 	public void sellProducts() {
 		printRequestMoneyMessage();
-		inputMoney += readAmount();
+		inputMoney += readAmount().get();
 		printLineSeparator();
 
 		while (vendingMachineService.canSell(new CanSellDto(products, inputMoney))) {

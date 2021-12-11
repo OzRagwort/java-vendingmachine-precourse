@@ -15,8 +15,9 @@ public class VendingMachineService {
 	public VendingMachineService() {
 	}
 
-	public void initCoin(Coins coins, InitCoinDto initCoinDto) {
-		int totalAmount = initCoinDto.getTotalAmount();
+	public void initCoin(InitCoinDto initCoinDto) {
+		Coins coins = initCoinDto.getCoins();
+		int totalAmount = initCoinDto.getTotalAmount().get();
 		coins.initCoins(totalAmount);
 	}
 

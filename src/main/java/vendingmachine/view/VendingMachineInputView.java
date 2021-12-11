@@ -2,12 +2,13 @@ package vendingmachine.view;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 
+import vendingmachine.domain.Amount;
 import vendingmachine.domain.ProductName;
 import vendingmachine.domain.Products;
 
 public class VendingMachineInputView {
-	public static int readAmount() {
-		return Integer.parseInt(readLine());
+	public static Amount readAmount() {
+		return new Amount(readLine());
 	}
 
 	public static Products readProduct() {
