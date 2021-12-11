@@ -30,10 +30,12 @@ public class VendingMachine {
 		printRequestHoldingAmountMessage();
 		int totalAmount = readAmount();
 		vendingMachineService.initCoin(coins, new InitCoinDto(totalAmount));
+		printLineSeparator();
 	}
 
 	public void showCoinState() {
 		printCoinState(coins);
+		printLineSeparator();
 	}
 
 	public void addProducts() {
@@ -42,11 +44,14 @@ public class VendingMachine {
 		products = vendingMachineService
 			.addProducts(new AddProductsDto(products, newProducts))
 			.getProducts();
+		printLineSeparator();
 	}
 
 	public void sellProducts() {
 		printRequestMoneyMessage();
 		inputMoney += readAmount();
+		printLineSeparator();
+
 		while (vendingMachineService.canSell(new CanSellDto(products, inputMoney))) {
 			printNowMoneyState(new ResponseMoneyState(inputMoney));
 			printRequestBuyProductNameMessage();
@@ -54,6 +59,7 @@ public class VendingMachine {
 			SellProductResultDto sellProductResultDto = vendingMachineService.sellProduct(
 				new SellProductDto(products, productName, inputMoney));
 			inputMoney = sellProductResultDto.getInputMoney();
+			printLineSeparator();
 		}
 		printNowMoneyState(new ResponseMoneyState(inputMoney));
 		ResponseChangesDto responseChangesDto = vendingMachineService.calculateChange(

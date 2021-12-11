@@ -7,6 +7,10 @@ import vendingmachine.dto.ResponseMoneyState;
 import vendingmachine.enums.Coin;
 
 public class VendingMachineOutputView {
+	public static void printLineSeparator() {
+		System.out.println();
+	}
+
 	public static void printRequestHoldingAmountMessage() {
 		System.out.println(REQUEST_HOLDING_AMOUNT_MESSAGE.get());
 	}
