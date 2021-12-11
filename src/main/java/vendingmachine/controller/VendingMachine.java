@@ -77,13 +77,20 @@ public class VendingMachine {
 	}
 
 	private void sellProduct() {
-		printNowMoneyState(new ResponseMoneyState(inputMoney));
-		printRequestBuyProductNameMessage();
-		ProductName productName = readProductName();
-		SellProductResultDto sellProductResultDto = vendingMachineService.sellProduct(
-			new SellProductDto(products, productName, inputMoney));
-		inputMoney = sellProductResultDto.getInputMoney();
-		printLineSeparator();
+		while (true) {
+			try {
+				printNowMoneyState(new ResponseMoneyState(inputMoney));
+				printRequestBuyProductNameMessage();
+				ProductName productName = readProductName();
+				SellProductResultDto sellProductResultDto = vendingMachineService.sellProduct(
+					new SellProductDto(products, productName, inputMoney));
+				inputMoney = sellProductResultDto.getInputMoney();
+				printLineSeparator();
+				return;
+			} catch (IllegalArgumentException e) {
+				printExceptionMessage(e);
+			}
+		}
 	}
 
 	private void responseChanges() {
