@@ -46,4 +46,12 @@ public class Products {
 		inputMoney -= product.sell();
 		return inputMoney;
 	}
+
+	private void validateFormat(String[] inputs) {
+		for (String input : inputs) {
+			if (!input.matches(REGEX)) {
+				throw new IllegalArgumentException(PRODUCT_INPUT_FORMAT_ERROR_MESSAGE.get());
+			}
+		}
+	}
 }

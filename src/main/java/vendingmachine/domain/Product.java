@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class Product {
 	private static final int NO_QUANTITY_COUNT = 0;
+
 	private String name;
 	private int price;
 	private int quantity;
@@ -12,9 +13,12 @@ public class Product {
 	public Product(String input, Pattern pattern) {
 		Matcher matcher = pattern.matcher(input);
 		if (matcher.find()) {
-			name = matcher.group(1);
-			price = Integer.parseInt(matcher.group(2));
-			quantity = Integer.parseInt(matcher.group(3));
+			ProductName productName = new ProductName(matcher.group(1));
+			Price price = new Price(matcher.group(2));
+			Quantity quantity = new Quantity(matcher.group(3));
+			this.name = productName.get();
+			this.price = price.get();
+			this.quantity = quantity.get();
 		}
 	}
 
