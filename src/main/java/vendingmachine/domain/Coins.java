@@ -58,6 +58,6 @@ public class Coins {
 	}
 
 	public boolean hasAmount(int amount) {
-		return coins.containsKey(amount);
+		return coins.get(amount) > 0;
 	}
 }
