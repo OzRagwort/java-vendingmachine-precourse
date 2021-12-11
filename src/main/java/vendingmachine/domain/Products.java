@@ -42,10 +42,8 @@ public class Products {
 	}
 
 	public boolean canSell(int inputMoney) {
-		long count = products.stream()
-			.filter(product -> product.canSell(inputMoney))
-			.count();
-		return count > 0;
+		return products.stream()
+			.anyMatch(product -> product.canSell(inputMoney));
 	}
 
 	public int sellProduct(ProductName name, int inputMoney) {
