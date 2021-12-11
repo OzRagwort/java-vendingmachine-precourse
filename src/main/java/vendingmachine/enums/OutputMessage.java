@@ -7,7 +7,8 @@ public enum OutputMessage {
 	REQUEST_PRODUCT_INFORMATION_MESSAGE("상품명과 가격, 수량을 입력해 주세요."),
 	REQUEST_MONEY_MESSAGE("투입 금액을 입력해 주세요."),
 	REQUEST_BUY_PRODUCT_NAME_MESSAGE("구매할 상품명을 입력해 주세요."),
-	RESPONSE_NOW_MONEY_FORM("투입 금액: %d원");
+	RESPONSE_NOW_MONEY_FORM("투입 금액: %d원"),
+	RESPONSE_CHANGE_MESSAGE("잔돈");
 
 	private final String message;
 

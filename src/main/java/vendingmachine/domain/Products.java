@@ -31,6 +31,13 @@ public class Products {
 		products.addAll(newProducts.products);
 	}
 
+	public boolean canSell(int inputMoney) {
+		long count = products.stream()
+			.filter(product -> product.canSell(inputMoney))
+			.count();
+		return count > 0;
+	}
+
 	public int sellProduct(ProductName name, int inputMoney) {
 		Product product = products.stream()
 			.filter(p -> p.isSameName(name.get()))

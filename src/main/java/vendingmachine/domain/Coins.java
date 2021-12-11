@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import vendingmachine.dto.ResponseChangesDto;
 import vendingmachine.enums.Coin;
 
 public class Coins {
@@ -33,5 +34,30 @@ public class Coins {
 
 	public int getCount(int amount) {
 		return coins.get(amount);
+	}
+
+	public void addCount(int amount, int count) {
+		coins.put(amount, coins.get(amount) + count);
+	}
+
+	public void subCount(int amount, int count) {
+		coins.put(amount, coins.get(amount) - count);
+	}
+
+	public ResponseChangesDto calculateChange(int money) {
+		Coins change = new Coins();
+		change.initCoins(INIT_COUNT);
+		for (Coin coin : Coin.values()) {
+			int amount = coin.get();
+			int count = Math.min(coins.get(amount), money / amount);
+			this.subCount(amount, count);
+			change.addCount(amount, count);
+			money -= amount * count;
+		}
+		return new ResponseChangesDto(change, money);
+	}
+
+	public boolean hasAmount(int amount) {
+		return coins.containsKey(amount);
 	}
 }

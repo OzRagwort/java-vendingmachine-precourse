@@ -5,9 +5,12 @@ import static vendingmachine.view.VendingMachineOutputView.*;
 
 import vendingmachine.domain.ProductName;
 import vendingmachine.domain.Products;
-import vendingmachine.domain.RemainCoin;
+import vendingmachine.domain.Coins;
 import vendingmachine.dto.AddProductsDto;
+import vendingmachine.dto.CanSellDto;
 import vendingmachine.dto.InitCoinDto;
+import vendingmachine.dto.RequestChangesDto;
+import vendingmachine.dto.ResponseChangesDto;
 import vendingmachine.dto.SellProductResultDto;
 import vendingmachine.dto.ResponseMoneyState;
 import vendingmachine.dto.SellProductDto;
@@ -16,7 +19,7 @@ import vendingmachine.service.VendingMachineService;
 public class VendingMachine {
 	private final VendingMachineService vendingMachineService = new VendingMachineService();
 
-	private RemainCoin coins = new RemainCoin();
+	private Coins coins = new Coins();
 	private Products products = new Products();
 	private int inputMoney = 0;
 
@@ -44,11 +47,18 @@ public class VendingMachine {
 	public void sellProducts() {
 		printRequestMoneyMessage();
 		inputMoney += readAmount();
+		while (vendingMachineService.canSell(new CanSellDto(products, inputMoney))) {
+			printNowMoneyState(new ResponseMoneyState(inputMoney));
+			printRequestBuyProductNameMessage();
+			ProductName productName = readProductName();
+			SellProductResultDto sellProductResultDto = vendingMachineService.sellProduct(
+				new SellProductDto(products, productName, inputMoney));
+			inputMoney = sellProductResultDto.getInputMoney();
+		}
 		printNowMoneyState(new ResponseMoneyState(inputMoney));
-		printRequestBuyProductNameMessage();
-		ProductName productName = readProductName();
-		SellProductResultDto sellProductResultDto = vendingMachineService.sellProduct(
-			new SellProductDto(products, productName, inputMoney));
-		inputMoney = sellProductResultDto.getInputMoney();
+		ResponseChangesDto responseChangesDto = vendingMachineService.calculateChange(
+			new RequestChangesDto(coins, inputMoney));
+		inputMoney = responseChangesDto.getMoney();
+		printChanges(responseChangesDto.getChange());
 	}
 }
