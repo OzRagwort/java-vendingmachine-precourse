@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import static vendingmachine.enums.ErrorMessage.*;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,10 +42,10 @@ public class Product {
 
 	public boolean canSell(int money) {
 		if (quantity == NO_QUANTITY_COUNT) {
-			return false;
+			throw new IllegalArgumentException(NO_QUANTITY_COUNT_ERROR_MESSAGE.get());
 		}
 		if (money < price) {
-			return false;
+			throw new IllegalArgumentException(MONEY_LOWER_THEN_PRICE_ERROR_MESSAGE.get());
 		}
 		return true;
 	}

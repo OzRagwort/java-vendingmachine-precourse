@@ -53,7 +53,9 @@ public class Products {
 			.filter(p -> p.isSameName(name.get()))
 			.findFirst()
 			.orElseThrow(() -> new IllegalArgumentException(NO_PRODUCT_ERROR_MESSAGE.get()));
-		inputMoney -= product.sell();
+		if (product.canSell(inputMoney)) {
+			inputMoney -= product.sell();
+		}
 		return inputMoney;
 	}
 

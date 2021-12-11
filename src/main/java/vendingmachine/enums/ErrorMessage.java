@@ -11,7 +11,9 @@ public enum ErrorMessage {
 	QUANTITY_NEGATIVE_NUMBER_MESSAGE(ERROR_MESSAGE.get() + "수량은 0 이상 입력해 주세요."),
 	PRODUCT_INPUT_FORMAT_ERROR_MESSAGE(ERROR_MESSAGE.get() + "추가할 상품은 [상품명,가격,수량] 형식으로 입력해주세요."),
 	NO_PRODUCT_ERROR_MESSAGE(ERROR_MESSAGE.get() + "상품이 없습니다."),
-	REGISTERED_PRODUCT_NAME_ERROR_MESSAGE(ERROR_MESSAGE.get() + "이미 등록된 상품명이 있습니다.");
+	REGISTERED_PRODUCT_NAME_ERROR_MESSAGE(ERROR_MESSAGE.get() + "이미 등록된 상품명이 있습니다."),
+	NO_QUANTITY_COUNT_ERROR_MESSAGE(ERROR_MESSAGE.get() + "매진되었습니다."),
+	MONEY_LOWER_THEN_PRICE_ERROR_MESSAGE(ERROR_MESSAGE.get() + "돈이 부족합니다.");
 
 	private final String message;
 
