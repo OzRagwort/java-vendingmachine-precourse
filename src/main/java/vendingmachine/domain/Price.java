@@ -11,6 +11,7 @@ public class Price extends Amount {
 		super(value);
 		int price = Integer.parseInt(value);
 		validateMinimumPrice(price);
+		this.price = price;
 	}
 
 	public int get() {
