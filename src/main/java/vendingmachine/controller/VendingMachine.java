@@ -47,12 +47,19 @@ public class VendingMachine {
 	}
 
 	public void registerProducts() {
-		printRequestProductInformation();
-		Products newProducts = readProduct();
-		products = vendingMachineService
-			.registerProducts(new AddProductsDto(products, newProducts))
-			.getProducts();
-		printLineSeparator();
+		while (true) {
+			try {
+				printRequestProductInformation();
+				Products newProducts = readProduct();
+				products = vendingMachineService
+					.registerProducts(new AddProductsDto(products, newProducts))
+					.getProducts();
+				printLineSeparator();
+				return;
+			} catch (IllegalArgumentException e) {
+				printExceptionMessage(e);
+			}
+		}
 	}
 
 	public void startSellPhase() {
