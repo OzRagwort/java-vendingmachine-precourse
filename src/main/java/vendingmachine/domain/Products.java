@@ -43,7 +43,13 @@ public class Products {
 
 	public boolean canSell(int inputMoney) {
 		return products.stream()
-			.anyMatch(product -> product.canSell(inputMoney));
+			.anyMatch(product -> {
+				try {
+					return product.canSell(inputMoney);
+				} catch (IllegalArgumentException e) {
+					return false;
+				}
+			});
 	}
 
 	public int sellProduct(ProductName name, int inputMoney) {
