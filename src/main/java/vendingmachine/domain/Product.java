@@ -30,6 +30,10 @@ public class Product {
 		return this.name.equals(name);
 	}
 
+	public boolean isSameName(Product product) {
+		return this.name.equals(product.name);
+	}
+
 	public boolean isSameQuantity(int quantity) {
 		return this.quantity == quantity;
 	}

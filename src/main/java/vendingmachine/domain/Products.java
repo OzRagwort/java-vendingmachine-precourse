@@ -22,12 +22,22 @@ public class Products {
 
 	public void addByString(String inputMessage) {
 		String[] inputs = inputMessage.split(SEPARATOR);
+		validateFormat(inputs);
 		for (String input : inputs) {
 			products.add(new Product(input, PATTERN));
 		}
 	}
 
-	public void addAll(Products newProducts) {
+	public boolean canRegister(Products newProducts) {
+		for (Product product : newProducts.products) {
+			if (products.stream().anyMatch(p -> p.isSameName(product))) {
+				throw new IllegalArgumentException(REGISTERED_PRODUCT_NAME_ERROR_MESSAGE.get());
+			}
+		}
+		return true;
+	}
+
+	public void registerAll(Products newProducts) {
 		products.addAll(newProducts.products);
 	}
 

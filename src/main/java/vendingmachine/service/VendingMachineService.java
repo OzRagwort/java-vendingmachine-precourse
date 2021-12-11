@@ -21,10 +21,12 @@ public class VendingMachineService {
 		coins.initCoins(totalAmount);
 	}
 
-	public ProductsDto addProducts(AddProductsDto addProductsDto) {
+	public ProductsDto registerProducts(AddProductsDto addProductsDto) {
 		Products products = addProductsDto.getProducts();
 		Products newProducts = addProductsDto.getNewProducts();
-		products.addAll(newProducts);
+		if (products.canRegister(newProducts)) {
+			products.registerAll(newProducts);
+		}
 		return new ProductsDto(products);
 	}
 

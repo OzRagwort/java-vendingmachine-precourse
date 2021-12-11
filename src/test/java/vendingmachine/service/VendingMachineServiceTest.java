@@ -32,7 +32,7 @@ public class VendingMachineServiceTest extends NsTest {
 				newProducts.addByString(readLine());
 
 				products = service
-					.addProducts(new AddProductsDto(products, newProducts))
+					.registerProducts(new AddProductsDto(products, newProducts))
 					.getProducts();
 
 				assertEquals(products.getProducts().size(), 2);

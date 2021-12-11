@@ -11,7 +11,7 @@ public class Application {
 		VendingMachine vendingMachine = new VendingMachine();
 		vendingMachine.initCoin();
 		vendingMachine.showCoinState();
-		vendingMachine.addProducts();
+		vendingMachine.registerProducts();
 		vendingMachine.sellProducts();
 	}
 }

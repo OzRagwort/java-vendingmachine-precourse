@@ -39,11 +39,11 @@ public class VendingMachine {
 		printLineSeparator();
 	}
 
-	public void addProducts() {
+	public void registerProducts() {
 		printRequestProductInformation();
 		Products newProducts = readProduct();
 		products = vendingMachineService
-			.addProducts(new AddProductsDto(products, newProducts))
+			.registerProducts(new AddProductsDto(products, newProducts))
 			.getProducts();
 		printLineSeparator();
 	}
