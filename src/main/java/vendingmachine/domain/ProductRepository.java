@@ -26,13 +26,13 @@ public class ProductRepository {
 		products.clear();
 	}
 
-	public void validateRegistered(Products products) {
+	private void validateRegistered(Products products) {
 		if (products.anyMatch(this.products)) {
 			throw new IllegalArgumentException(ALREADY_REGISTERED_PRODUCT_ERROR.get());
 		}
 	}
 
-	public void validateRegistered(Product product) {
+	private void validateRegistered(Product product) {
 		if (this.products.contains(product)) {
 			throw new IllegalArgumentException(ALREADY_REGISTERED_PRODUCT_ERROR.get());
 		}
