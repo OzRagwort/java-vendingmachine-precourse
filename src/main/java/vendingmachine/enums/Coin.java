@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import vendingmachine.domain.Money;
 import vendingmachine.domain.Quantity;
 
 public enum Coin {
@@ -37,7 +38,7 @@ public enum Coin {
 		return amount;
 	}
 
-	public int getTotalAmount(Quantity quotient) {
-		return quotient.mul(amount);
+	public Money getTotalAmount(Quantity quotient) {
+		return new Money(quotient.mul(amount));
 	}
 }

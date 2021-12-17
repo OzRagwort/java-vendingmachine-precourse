@@ -17,6 +17,12 @@ public class Money {
 		this.money = integerInput;
 	}
 
+	public Money(int money) {
+		validateNegative(money);
+		validateDividedByTen(money);
+		this.money = money;
+	}
+
 	public int get() {
 		return money;
 	}
@@ -25,8 +31,8 @@ public class Money {
 		this.money += money.money;
 	}
 
-	public void sub(int totalAmount) {
-		this.money -= totalAmount;
+	public void sub(Money money) {
+		this.money -= money.money;
 	}
 
 	public boolean moreThan(int amount) {
