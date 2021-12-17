@@ -1,5 +1,6 @@
 package vendingmachine.service;
 
+import vendingmachine.domain.Change;
 import vendingmachine.domain.CoinRepository;
 import vendingmachine.domain.Money;
 import vendingmachine.domain.MoneyRepository;
@@ -13,6 +14,7 @@ import vendingmachine.dto.RequestRegisterProductDto;
 import vendingmachine.dto.RequestSellProductDto;
 import vendingmachine.dto.ResponseCoinQuantityDto;
 import vendingmachine.dto.ResponsePayMoneyDto;
+import vendingmachine.dto.ResponseReturnChangeDto;
 
 public class VendingMachineService {
 	private final CoinRepository coinRepository;
@@ -58,5 +60,10 @@ public class VendingMachineService {
 	public boolean hasSellProduct() {
 		Money money = moneyRepository.getMoney();
 		return productRepository.hasSellProduct(money);
+	}
+
+	public ResponseReturnChangeDto returnChange() {
+		Change change = coinRepository.returnChange(moneyRepository);
+		return new ResponseReturnChangeDto(change);
 	}
 }

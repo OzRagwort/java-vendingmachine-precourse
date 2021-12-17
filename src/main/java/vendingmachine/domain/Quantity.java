@@ -13,6 +13,13 @@ public class Quantity {
 		this.quantity = quantity;
 	}
 
+	public static Quantity min(Quantity a, Quantity b) {
+		if (a.quantity <= b.quantity) {
+			return a;
+		}
+		return b;
+	}
+
 	public int get() {
 		return quantity;
 	}
@@ -23,10 +30,6 @@ public class Quantity {
 
 	public void sub(Quantity quantity) {
 		this.quantity -= quantity.quantity;
-	}
-
-	public int mul(int amount) {
-		return amount * quantity;
 	}
 
 	public boolean isEmpty() {

@@ -35,6 +35,10 @@ public class Money {
 		this.money -= money.money;
 	}
 
+	public int div(int amount) {
+		return money / amount;
+	}
+
 	public boolean moreThan(int amount) {
 		return money >= amount;
 	}

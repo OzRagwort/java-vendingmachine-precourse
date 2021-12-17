@@ -35,6 +35,21 @@ public class CoinRepository {
 		return Collections.unmodifiableMap(coins);
 	}
 
+	public Change returnChange(MoneyRepository moneyRepository) {
+		Change change = new Change();
+		for (Coin coin : Coin.values()) {
+			Money money = moneyRepository.getMoney();
+			Quantity quantity = new Quantity(Quantity.min(coins.get(coin), coin.getQuotient(money)).get());
+			if (quantity.isEmpty()) {
+				continue;
+			}
+			change.add(coin, quantity);
+			coins.get(coin).sub(quantity);
+			moneyRepository.sub(coin.getTotalAmount(quantity));
+		}
+		return change;
+	}
+
 	public void clear() {
 		for (Coin coin : Coin.values()) {
 			coins.put(coin, new Quantity(INIT_COIN_QUANTITY));

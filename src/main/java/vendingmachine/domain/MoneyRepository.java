@@ -25,6 +25,10 @@ public class MoneyRepository {
 		throw new IllegalArgumentException(TOO_MUCH_INSERTED_MONEY_ERROR.get());
 	}
 
+	public void sub(Money money) {
+		this.money.sub(money);
+	}
+
 	public void sell(Product product) {
 		checkCanSell(product);
 		this.money.sub(product.getPrice());

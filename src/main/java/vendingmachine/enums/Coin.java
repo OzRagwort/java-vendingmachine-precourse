@@ -39,6 +39,10 @@ public enum Coin {
 	}
 
 	public Money getTotalAmount(Quantity quotient) {
-		return new Money(quotient.mul(amount));
+		return new Money(quotient.get() * amount);
+	}
+
+	public Quantity getQuotient(Money money) {
+		return new Quantity(money.div(amount));
 	}
 }

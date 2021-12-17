@@ -47,7 +47,7 @@ public class InputView {
 		return new RequestSellProductDto(name);
 	}
 
-	private static void printPayMoney(ResponsePayMoneyDto responsePayMoneyDto) {
+	public static void printPayMoney(ResponsePayMoneyDto responsePayMoneyDto) {
 		Money money = responsePayMoneyDto.getMoney();
 		String message = String.format(RESPONSE_PAY_MONEY_FORM, money.get());
 		System.out.println(message);

@@ -43,4 +43,9 @@ public class VendingMachine {
 			vendingMachineService.sellProduct(requestSellProductDto);
 		}
 	}
+
+	public void returnChange() {
+		printPayMoney(vendingMachineService.getPayMoney());
+		outputReturnChange(vendingMachineService.returnChange());
+	}
 }
