@@ -29,6 +29,10 @@ public class Money {
 		return money >= amount;
 	}
 
+	public boolean underThan(int amount) {
+		return money < amount;
+	}
+
 	public boolean isRemain() {
 		return money > EMPTY_MONEY;
 	}
