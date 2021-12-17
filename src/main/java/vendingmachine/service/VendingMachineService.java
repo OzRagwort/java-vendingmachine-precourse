@@ -9,6 +9,7 @@ import vendingmachine.dto.RequestHoldingMoneyDto;
 import vendingmachine.dto.RequestInsertMoneyDto;
 import vendingmachine.dto.RequestRegisterProductDto;
 import vendingmachine.dto.ResponseCoinQuantityDto;
+import vendingmachine.dto.ResponsePayMoneyDto;
 
 public class VendingMachineService {
 	private final CoinRepository coinRepository;
@@ -38,5 +39,9 @@ public class VendingMachineService {
 	public void insertMoney(RequestInsertMoneyDto requestInsertMoneyDto) {
 		Money money = requestInsertMoneyDto.getMoney();
 		moneyRepository.add(money);
+	}
+
+	public ResponsePayMoneyDto getPayMoney() {
+		return new ResponsePayMoneyDto(moneyRepository.getMoney());
 	}
 }

@@ -11,6 +11,12 @@ public class MoneyRepository {
 		clear();
 	}
 
+	public Money getMoney() {
+		Money newMoney = new Money(INIT_MONEY);
+		newMoney.add(money);
+		return newMoney;
+	}
+
 	public void add(Money money) {
 		if (this.money.canAdd(money)) {
 			this.money.add(money);
