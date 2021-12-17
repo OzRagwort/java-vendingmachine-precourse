@@ -5,6 +5,8 @@ import static vendingmachine.enums.ErrorMessage.*;
 import vendingmachine.enums.Coin;
 
 public class Money {
+	private static final int EMPTY_MONEY = 0;
+
 	private int money;
 
 	public Money(String input) {
@@ -17,6 +19,18 @@ public class Money {
 
 	public int get() {
 		return money;
+	}
+
+	public void sub(int totalAmount) {
+		this.money -= totalAmount;
+	}
+
+	public boolean moreThan(int amount) {
+		return money >= amount;
+	}
+
+	public boolean isRemain() {
+		return money > EMPTY_MONEY;
 	}
 
 	private void validateNumberFormat(String input) {

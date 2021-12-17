@@ -14,5 +14,6 @@ public class VendingMachine {
 
 	public void setupCoin() {
 		RequestHoldingMoneyDto requestHoldingMoneyDto = inputHoldingMoney();
+		vendingMachineService.setupCoin(requestHoldingMoneyDto);
 	}
 }
