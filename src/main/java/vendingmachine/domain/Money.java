@@ -41,6 +41,14 @@ public class Money {
 		return money > EMPTY_MONEY;
 	}
 
+	public boolean canAdd(Money money) {
+		long longMoney = (long)this.money + (long)money.money;
+		if (longMoney <= Integer.MAX_VALUE) {
+			return true;
+		}
+		return false;
+	}
+
 	private void validateNumberFormat(String input) {
 		try {
 			Integer.parseInt(input);

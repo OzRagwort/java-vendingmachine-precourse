@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import static vendingmachine.enums.ErrorMessage.*;
+
 public class MoneyRepository {
 	private static final String INIT_MONEY = "0";
 
@@ -10,7 +12,11 @@ public class MoneyRepository {
 	}
 
 	public void add(Money money) {
-		this.money.add(money);
+		if (this.money.canAdd(money)) {
+			this.money.add(money);
+			return;
+		}
+		throw new IllegalArgumentException(TOO_MUCH_INSERTED_MONEY_ERROR.get());
 	}
 
 	public void clear() {
