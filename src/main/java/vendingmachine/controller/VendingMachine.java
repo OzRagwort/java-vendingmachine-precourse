@@ -39,5 +39,6 @@ public class VendingMachine {
 
 	public void sellProduct() {
 		RequestSellProductDto requestSellProductDto = inputSellProduct(vendingMachineService.getPayMoney());
+		vendingMachineService.sellProduct(requestSellProductDto);
 	}
 }

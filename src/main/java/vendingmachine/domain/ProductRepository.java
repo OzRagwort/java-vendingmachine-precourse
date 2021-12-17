@@ -22,6 +22,13 @@ public class ProductRepository {
 		this.products.addAll(products.getProducts());
 	}
 
+	public Product findByName(Name name) {
+		return products.stream().
+			filter(product -> product.isSameName(name)).
+			findFirst()
+			.orElseThrow(() -> new IllegalArgumentException(NO_SUCH_PRODUCT_ERROR.get()));
+	}
+
 	public void clear() {
 		products.clear();
 	}

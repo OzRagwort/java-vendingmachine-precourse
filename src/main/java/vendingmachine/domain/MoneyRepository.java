@@ -25,6 +25,21 @@ public class MoneyRepository {
 		throw new IllegalArgumentException(TOO_MUCH_INSERTED_MONEY_ERROR.get());
 	}
 
+	public void sell(Product product) {
+		checkCanSell(product);
+		this.money.sub(product.getPrice());
+	}
+
+	private void checkCanSell(Product product) {
+		if (product.isSoldOut()) {
+			throw new IllegalArgumentException(SOLD_OUT_ERROR.get());
+		}
+		int price = product.getPrice().get();
+		if (money.underThan(price)) {
+			throw new IllegalArgumentException(NOT_ENOUGH_MONEY_ERROR.get());
+		}
+	}
+
 	public void clear() {
 		money = new Money(INIT_MONEY);
 	}

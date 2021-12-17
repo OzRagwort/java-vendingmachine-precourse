@@ -1,6 +1,8 @@
 package vendingmachine.domain;
 
 public class Quantity {
+	private static final int EMPTY_VALUE = 0;
+
 	private int quantity;
 
 	public Quantity(String input) {
@@ -19,7 +21,15 @@ public class Quantity {
 		this.quantity += quotient.quantity;
 	}
 
+	public void sub(Quantity quantity) {
+		this.quantity -= quantity.quantity;
+	}
+
 	public int mul(int amount) {
 		return amount * quantity;
+	}
+
+	public boolean isEmpty() {
+		return quantity == EMPTY_VALUE;
 	}
 }

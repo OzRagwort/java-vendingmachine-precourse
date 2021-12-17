@@ -10,7 +10,10 @@ public enum ErrorMessage {
 	ALREADY_REGISTERED_PRODUCT_ERROR("이미 등록된 상품을 등록하였습니다."),
 	NAME_LENGTH_SO_SHORT_ERROR("상품명은 1글자 이상 써주세요"),
 	PRICE_UNDER_THAN_MINIMUM_PRICE_ERROR("가격은 100원 이상이어야 합니다."),
-	TOO_MUCH_INSERTED_MONEY_ERROR("너무 많은 돈을 투입하셨습니다.");
+	TOO_MUCH_INSERTED_MONEY_ERROR("너무 많은 돈을 투입하셨습니다."),
+	NO_SUCH_PRODUCT_ERROR("입력하신 상품명의 상품이 없습니다."),
+	SOLD_OUT_ERROR("상품이 매진되었습니다."),
+	NOT_ENOUGH_MONEY_ERROR("돈이 모자잡니다.");
 
 	private final String message;
 

@@ -3,11 +3,14 @@ package vendingmachine.service;
 import vendingmachine.domain.CoinRepository;
 import vendingmachine.domain.Money;
 import vendingmachine.domain.MoneyRepository;
+import vendingmachine.domain.Name;
+import vendingmachine.domain.Product;
 import vendingmachine.domain.ProductRepository;
 import vendingmachine.domain.Products;
 import vendingmachine.dto.RequestHoldingMoneyDto;
 import vendingmachine.dto.RequestInsertMoneyDto;
 import vendingmachine.dto.RequestRegisterProductDto;
+import vendingmachine.dto.RequestSellProductDto;
 import vendingmachine.dto.ResponseCoinQuantityDto;
 import vendingmachine.dto.ResponsePayMoneyDto;
 
@@ -43,5 +46,12 @@ public class VendingMachineService {
 
 	public ResponsePayMoneyDto getPayMoney() {
 		return new ResponsePayMoneyDto(moneyRepository.getMoney());
+	}
+
+	public void sellProduct(RequestSellProductDto requestSellProductDto) {
+		Name name = requestSellProductDto.getName();
+		Product product = productRepository.findByName(name);
+		moneyRepository.sell(product);
+		product.sell();
 	}
 }
