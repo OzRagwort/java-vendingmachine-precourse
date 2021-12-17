@@ -33,6 +33,13 @@ public class Product {
 		return this.name.isSame(name);
 	}
 
+	public boolean canSell(Money money) {
+		if (isSoldOut()) {
+			return false;
+		}
+		return money.moreThan(price.get());
+	}
+
 	private void validateMinimumPrice(Money price) {
 		if (price.underThan(MINIMUM_PRICE)) {
 			throw new IllegalArgumentException(PRICE_UNDER_THAN_MINIMUM_PRICE_ERROR.get());

@@ -54,4 +54,9 @@ public class VendingMachineService {
 		moneyRepository.sell(product);
 		product.sell();
 	}
+
+	public boolean hasSellProduct() {
+		Money money = moneyRepository.getMoney();
+		return productRepository.hasSellProduct(money);
+	}
 }

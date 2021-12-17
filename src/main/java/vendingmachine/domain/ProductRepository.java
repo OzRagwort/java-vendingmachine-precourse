@@ -44,4 +44,9 @@ public class ProductRepository {
 			throw new IllegalArgumentException(ALREADY_REGISTERED_PRODUCT_ERROR.get());
 		}
 	}
+
+	public boolean hasSellProduct(Money money) {
+		return products.stream()
+			.anyMatch(product -> product.canSell(money));
+	}
 }
