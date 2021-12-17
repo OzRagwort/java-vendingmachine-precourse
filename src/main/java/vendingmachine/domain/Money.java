@@ -21,6 +21,10 @@ public class Money {
 		return money;
 	}
 
+	public void add(Money money) {
+		this.money += money.money;
+	}
+
 	public void sub(int totalAmount) {
 		this.money -= totalAmount;
 	}

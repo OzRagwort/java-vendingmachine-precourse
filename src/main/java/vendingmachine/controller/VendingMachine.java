@@ -33,5 +33,6 @@ public class VendingMachine {
 
 	public void insertMoney() {
 		RequestInsertMoneyDto requestInsertMoneyDto = inputInsertMoney();
+		vendingMachineService.insertMoney(requestInsertMoneyDto);
 	}
 }
