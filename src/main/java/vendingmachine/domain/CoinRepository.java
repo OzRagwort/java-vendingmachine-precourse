@@ -2,6 +2,7 @@ package vendingmachine.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInList;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,10 @@ public class CoinRepository {
 				money.sub(coin.getTotalAmount(ONE_QUANTITY));
 			}
 		}
+	}
+
+	public Map<Coin, Quantity> getCoinQuantity() {
+		return Collections.unmodifiableMap(coins);
 	}
 
 	public void clear() {
