@@ -7,6 +7,8 @@ public class Money {
 
 	public Money(String input) {
 		validateNumberFormat(input);
+		int integerInput = Integer.parseInt(input);
+		validateNegative(integerInput);
 		this.money = Integer.parseInt(input);
 	}
 
@@ -19,6 +21,12 @@ public class Money {
 			Integer.parseInt(input);
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException(MONEY_NUMBER_FORMAT_ERROR.get());
+		}
+	}
+
+	private void validateNegative(int integerInput) {
+		if (integerInput < 0) {
+			throw new IllegalArgumentException(MONEY_LOWER_THEN_ZERO_ERROR.get());
 		}
 	}
 }

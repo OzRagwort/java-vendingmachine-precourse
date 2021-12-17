@@ -2,7 +2,8 @@ package vendingmachine.enums;
 
 public enum ErrorMessage {
 	ERROR_MESSAGE("[ERROR] "),
-	MONEY_NUMBER_FORMAT_ERROR("금액은 숫자로 입력해야 합니다.");
+	MONEY_NUMBER_FORMAT_ERROR("금액은 숫자로 입력해야 합니다."),
+	MONEY_LOWER_THEN_ZERO_ERROR("금액은 0 이상 입력해야 합니다.");
 
 	private final String message;
 
