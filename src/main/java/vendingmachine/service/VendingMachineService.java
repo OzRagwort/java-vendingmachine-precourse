@@ -29,6 +29,5 @@ public class VendingMachineService {
 	public void registerProduct(RequestRegisterProductDto requestRegisterProductDto) {
 		Products products = requestRegisterProductDto.getProducts();
 		productRepository.addAll(products);
-		productRepository.clear();
 	}
 }
