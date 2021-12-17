@@ -5,7 +5,8 @@ public enum ErrorMessage {
 	MONEY_NUMBER_FORMAT_ERROR("금액은 숫자로 입력해야 합니다."),
 	MONEY_LOWER_THEN_ZERO_ERROR("금액은 0 이상 입력해야 합니다."),
 	MONEY_NOT_DIVIDED_BY_TEN_ERROR("금액은 10으로 나누어 떨어져야 합니다."),
-	FAIL_FIND_BY_AMOUNT_ERROR("없는 동전 종류입니다.");
+	FAIL_FIND_BY_AMOUNT_ERROR("없는 동전 종류입니다."),
+	PRODUCT_PATTERN_ERROR("상품의 형식을 잘못입력하셨습니다.");
 
 	private final String message;
 
