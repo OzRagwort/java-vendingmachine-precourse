@@ -18,8 +18,15 @@ public class VendingMachine {
 	}
 
 	public void setupCoin() {
-		RequestHoldingMoneyDto requestHoldingMoneyDto = inputHoldingMoney();
-		vendingMachineService.setupCoin(requestHoldingMoneyDto);
+		while (true) {
+			try {
+				RequestHoldingMoneyDto requestHoldingMoneyDto = inputHoldingMoney();
+				vendingMachineService.setupCoin(requestHoldingMoneyDto);
+				return;
+			} catch (IllegalArgumentException e) {
+				outputExceptionMessage(e);
+			}
+		}
 	}
 
 	public void showCoinQuantity() {
@@ -28,19 +35,44 @@ public class VendingMachine {
 	}
 
 	public void registerProduct() {
-		RequestRegisterProductDto requestRegisterProductDto = inputRegisterProduct();
-		vendingMachineService.registerProduct(requestRegisterProductDto);
+		while (true) {
+			try {
+				RequestRegisterProductDto requestRegisterProductDto = inputRegisterProduct();
+				vendingMachineService.registerProduct(requestRegisterProductDto);
+				return;
+			} catch (IllegalArgumentException e) {
+				outputExceptionMessage(e);
+			}
+		}
 	}
 
 	public void insertMoney() {
-		RequestInsertMoneyDto requestInsertMoneyDto = inputInsertMoney();
-		vendingMachineService.insertMoney(requestInsertMoneyDto);
+		while (true) {
+			try {
+				RequestInsertMoneyDto requestInsertMoneyDto = inputInsertMoney();
+				vendingMachineService.insertMoney(requestInsertMoneyDto);
+				return;
+			} catch (IllegalArgumentException e) {
+				outputExceptionMessage(e);
+			}
+		}
 	}
 
 	public void sellProduct() {
 		while (vendingMachineService.hasSellProduct()) {
-			RequestSellProductDto requestSellProductDto = inputSellProduct(vendingMachineService.getPayMoney());
-			vendingMachineService.sellProduct(requestSellProductDto);
+			sellProductStep();
+		}
+	}
+
+	private void sellProductStep() {
+		while (true) {
+			try {
+				RequestSellProductDto requestSellProductDto = inputSellProduct(vendingMachineService.getPayMoney());
+				vendingMachineService.sellProduct(requestSellProductDto);
+				return;
+			} catch (IllegalArgumentException e) {
+				outputExceptionMessage(e);
+			}
 		}
 	}
 
