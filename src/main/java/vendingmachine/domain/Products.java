@@ -3,6 +3,7 @@ package vendingmachine.domain;
 import static vendingmachine.enums.ErrorMessage.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,6 +21,14 @@ public class Products {
 			Product product = makeProduct(productString);
 			products.add(product);
 		}
+	}
+
+	public List<Product> getProducts() {
+		return Collections.unmodifiableList(products);
+	}
+
+	public boolean anyMatch(List<Product> products) {
+		return this.products.stream().anyMatch(products::contains);
 	}
 
 	private Product makeProduct(String productString) {

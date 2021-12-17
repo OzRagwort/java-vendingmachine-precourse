@@ -27,5 +27,6 @@ public class VendingMachine {
 
 	public void registerProduct() {
 		RequestRegisterProductDto requestRegisterProductDto = inputRegisterProduct();
+		vendingMachineService.registerProduct(requestRegisterProductDto);
 	}
 }
